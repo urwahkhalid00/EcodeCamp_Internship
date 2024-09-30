@@ -1,0 +1,122 @@
+body {
+    background-image: url('/static/img/background.png');
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif; 
+}
+
+h1 {
+    padding: 20px 0; 
+    font-size: 2.5rem;
+    text-align: center; 
+    text-shadow: 2px 2px 5px rgba(165, 22, 22, 0.3);
+    color: rgb(97, 21, 21);
+}
+
+h2 {
+    padding: 10px 0;
+    font-size: 1.55rem;
+    text-align: center;
+    text-shadow: 2px 2px 5px rgba(165, 22, 22, 0.3);
+    color: rgb(97, 21, 21);
+}
+
+.input-container {
+    display: flex;
+    justify-content: center; 
+    gap: 10px;
+    padding: 10px 0; 
+}
+
+#input-todo {
+    width: 250px;
+    height: 40px; 
+    font-size: 1.1rem;
+    border: 2px solid darkcyan; 
+    border-radius: 15px;
+    padding: 5px; 
+}
+
+#add-todo {
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    background-color: rgb(204, 32, 32);
+    color: aqua;
+}
+
+.todo-container {
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+    margin: 20px auto; 
+}
+
+.todo {
+    background-color: rgb(60, 201, 201);
+    justify-content: space-between;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+}
+
+.actions > form {
+    display: inline;
+}
+
+.actions > form > button {
+    border-radius: 7px;
+    border: none;
+    font-size: 1rem;
+    padding: 1px 10px; 
+    cursor: pointer;
+    background-color: rgb(204, 32, 32);
+    color: aqua;
+    transition: background-color 0.3s;
+}
+
+.actions > form > button:hover {
+    background-color: rgb(180, 20, 20); /* Darken button on hover */
+}
+
+.btn-1{
+    border-radius: 7px;
+    border: none;
+    font-size: 1rem;
+    padding: 1px 8px; 
+    cursor: pointer;
+    background-color: rgb(204, 32, 32);
+    color: aqua;
+    transition: background-color 0.3s;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    #input-todo {
+        width: 70vw;
+    }
+
+    #add-todo {
+        width: 35px;
+        height: 35px;
+    }
+
+    .todo-container {
+        width: 95vw;
+    }
+}

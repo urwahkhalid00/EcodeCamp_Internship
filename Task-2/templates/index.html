@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO-DO List</title>
+    <link rel="stylesheet" href="{{ url_for('static' , filename = 'css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+        <h1>To-Do List Flask</h1>
+        <form action="{{ url_for('home') }}" class="input-container" method="POST">
+            <input type="text" placeholder="Enter Todo" id="input-todo" name="todo_name" required>
+            <button id="add-todo">+</button>
+        </form>
+        <h2>Todos</h2>
+        <div class="todo-container">
+            {% for item in items %}
+            <div class="todo">
+                <p>{{ item.name }}</p>
+                <div class="actions">
+                    <button class="btn-1" data-toggle="modal" data-target="#editModal{{ item.id }} "><i class="fas fa-pencil-alt"></i></button>
+                    <div class="modal fade" id="editModal{{ item.id }}" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <form action="{{ url_for('edit_todo', todo_id=item.id) }}" method="POST">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Edit Todo</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="text" name="todo_text" value="{{ item.name }}" required>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+            
+                     <form action="{{ url_for('delete_todo', todo_id=item.id) }}" method = "POST">
+                        <button type="submit"><i class="fas fa-trash-alt"></i></button>
+                     </form>
+                </div>
+            </div>
+            {% endfor %}
+    
+    
+        </div>
+
+
+</body>
+</html>
