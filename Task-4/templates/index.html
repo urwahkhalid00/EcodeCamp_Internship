@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Book</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1>Contact Book</h1>
+            <!-- <h2>Add New Contact</h2> -->
+            <form action="/add" method="POST">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="text" name="phone" placeholder="Phone Number" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <button type="submit">Add Contact</button>
+            </form>
+        </div>
+
+        <div class="contacts-container">
+            <h2>Contacts</h2>
+            <ul class="contact-list">
+                {% for contact in contacts %}
+                <li class="contact">
+                    <div class="contact-info">
+                        <strong>{{ contact[0] }}</strong><br>
+                        {{ contact[1] }}<br>
+                        <small>{{ contact[2] }}</small>
+                    </div>
+                    <div class="button-container">
+                        <a href="{{ url_for('delete_contact', name=contact[0]) }}" class="delete-button">Delete</a>
+                        <button onclick="document.getElementById('updateForm{{ loop.index }}').style.display='block'">Update</button>
+                    </div>
+                    
+                    <div id="updateForm{{ loop.index }}" class="update-form">
+                        <form action="/update" method="POST">
+                            <input type="hidden" name="old_name" value="{{ contact[0] }}">
+                            <input type="text" name="name" placeholder="New Name" value="{{ contact[0] }}" required>
+                            <input type="text" name="phone" placeholder="New Phone Number" value="{{ contact[1] }}" required>
+                            <input type="email" name="email" placeholder="New Email" value="{{ contact[2] }}" required>
+                            <button type="submit">Update Contact</button>
+                            <button type="button" onclick="document.getElementById('updateForm{{ loop.index }}').style.display='none'">Cancel</button>
+                        </form>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

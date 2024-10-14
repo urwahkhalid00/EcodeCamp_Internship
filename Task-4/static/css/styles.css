@@ -1,0 +1,103 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 30%; /* Adjust as needed */
+}
+
+.contacts-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 65%; /* Adjust as needed */
+    margin-left: 20px; /* Space between the two sections */
+}
+
+h1, h2 {
+    color: #333;
+    text-align: center;
+}
+
+input[type="text"], input[type="email"], button {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.delete-button {
+    color: red;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.delete-button:hover {
+    text-decoration: underline;
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+}
+
+.contact {
+    padding: 10px;
+    background: #f9f9f9;
+    margin: 10px 0;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.update-form {
+    display: none;
+    margin-top: 10px;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+}
+
+.contact-info {
+    flex-grow: 1; /* Allow the contact info to take available space */
+}
+
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column; /* Stack on smaller screens */
+    }
+
+    .form-container, .contacts-container {
+        width: 100%; /* Full width on small screens */
+        margin-left: 0; /* Reset margin */
+    }
+}
